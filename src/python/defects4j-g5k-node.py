@@ -18,7 +18,7 @@ from core.tools.BrutpolC import BrutpolC
 from core.tools.Brutpol import Brutpol
 from core.tools.Astor import Astor
 from core.tools.Kali import Kali
-
+from core.tools.AdqFix import AdqFix
 
 
 
@@ -64,5 +64,7 @@ elif args.tool == "Genprog":
     tool = Astor()
 elif args.tool == "Kali":
     tool = Kali()
-
+elif args.tool.lower() == "adqfix":
+    tool = AdqFix()
+        
 tool.run(project, id)
