@@ -34,7 +34,7 @@ class Config(object):
 		self.flthreshold = 0.1
 		self.scope = "package"
 		self.seed = 300
-		self.population = 500
+		self.population = 20
 		self.maxgen = 500
 		self.stopfirst = True
 		self.maxtime = 180
