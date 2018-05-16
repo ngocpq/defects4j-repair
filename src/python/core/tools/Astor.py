@@ -49,13 +49,15 @@ class Astor(Tool):
 		cmd += ' -package ' + project.package
 		cmd += ' -jvm4testexecution ' + conf.javaHome8
 		cmd += ' -javacompliancelevel ' + str(project.complianceLevel[str(id)]['source'])
-		cmd += ' -maxgen ' + maxgen
-		cmd += ' -seed ' + seed
-		cmd += ' -maxtime %d ' % (60)
-		cmd += ' -scope local '
-		cmd += ' -stopfirst false'
-		cmd += ' -flthreshold 0'
-		cmd += ' -population ' + population 
+		
+		cmd += ' -maxgen %s' % (conf.maxgen)
+		cmd += ' -seed %s' % conf.seed
+		cmd += ' -maxtime %s ' % (conf.maxtime)
+		cmd += ' -scope %s' % (conf.scope)
+		cmd += ' -stopfirst %s' % (conf.stopfirst)
+		cmd += ' -flthreshold %s' % (conf.flthreshold)
+		cmd += ' -population %s' % (conf.population) 
+		
 		cmd += ' -srcjavafolder ' + source['srcjava']
 		cmd += ' -srctestfolder ' + source['srctest']
 		cmd += ' -binjavafolder ' + source['binjava']
