@@ -33,38 +33,38 @@ args = initParser()
 project = None
 tool = None
 id = int(args.id)
-if args.project == "Lang":
+if args.project.lower() == "Lang".lower():
     project = LangProject()
-elif args.project == "Math":
+elif args.project.lower() == "Math".lower():
     project = MathProject()
-elif args.project == "Chart":
+elif args.project.lower() == "Chart".lower():
     project = ChartProject()
-elif args.project == "Time":
+elif args.project.lower() == "Time".lower():
     project = TimeProject()
-elif args.project == "Closure":
+elif args.project.lower() == "Closure".lower():
     project = ClosureProject()
-elif args.project == "Mockito":
+elif args.project.lower() == "Mockito".lower():
     project = MockitoProject()
 
-if args.tool == "NopolPC":
+if args.tool.lower() == "NopolPC".lower():
     tool = NopolPC()
-elif args.tool == "NopolC":
+elif args.tool.lower() == "NopolC".lower():
     tool = NopolC()
-elif args.tool == "Nopol":
+elif args.tool.lower() == "Nopol".lower():
     tool = Nopol() 
-elif args.tool == "Brutpol":
+elif args.tool.lower() == "Brutpol".lower():
     tool = Brutpol() 
-elif args.tool == "BrutpolPC":
+elif args.tool.lower() == "BrutpolPC".lower():
     tool = BrutpolPC()
-elif args.tool == "BrutpolC":
+elif args.tool.lower() == "BrutpolC".lower():
     tool = BrutpolC() 
-elif args.tool == "Ranking":
+elif args.tool.lower() == "Ranking".lower():
     tool = Ranking()     
-elif args.tool == "Genprog":
+elif args.tool.lower() == "Genprog".lower():
     tool = Astor()
-elif args.tool == "Kali":
+elif args.tool.lower() == "Kali".lower():
     tool = Kali()
-elif args.tool.lower() == "adqfix":
+elif args.tool.lower() == "adqfix".lower():
     tool = AdqFix()
         
 tool.run(project, id)
