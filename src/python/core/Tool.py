@@ -47,6 +47,7 @@ class Tool(object):
 		cmd += 'cp -r ' + conf.defects4jRoot + '/framework/projects/' + project.name + '/lib/* lib/;'
 		cmd += 'find . -type f -name "package-info.java" -delete;'
 
+		print cmd
 		subprocess.check_output(cmd, shell=True)
 		project.compile(workdir)
 		return workdir

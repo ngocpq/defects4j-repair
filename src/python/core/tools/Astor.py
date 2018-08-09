@@ -34,7 +34,8 @@ class Astor(Tool):
 		reg = re.compile('- (.*)::(.*)')
 		m = reg.findall(info)
 		for i in m:
-			failingTest += i[0] + ":"    
+			#failingTest += i[0] + ":"    
+			failingTest += i[0] +"#"+i[1] + ":"
 
 		workdir = self.initTask(project, id)
 		cmd = 'cd ' + workdir +  ';'

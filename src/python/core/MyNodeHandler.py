@@ -61,12 +61,12 @@ class MyNodeHandler(object):
 			cmdOutput = subprocess.check_output(nodeCmd, shell=True, stdin=None, stderr=devnull)			
 			
 			print "output: %s" % cmdOutput
-# 			m = re.search('OAR_JOB_ID=([0-9]+)', cmdOutput)
-# 			if m:
-# 				jobId = int(m.group(1))
-# 				self.taskOARId[task] = jobId
-# 				self.running += 1
-# 				self.printStatus(totalTask, startTime)
+			#m = re.search('OAR_JOB_ID=([0-9]+)', cmdOutput)
+			#if m:
+			#jobId = int(m.group(1))
+			#self.taskOARId[task] = jobId
+			#self.running += 1
+			self.printStatus(totalTask, startTime)
 			
 		print "Execute %d tasks in %2.2f sec" % (totalTask, time.time() - startTime)
 		
@@ -94,7 +94,7 @@ class MyNodeHandler(object):
 		for tool in tools:
 			output += "----------|"
 		output += "\n"
-		states = self.getRunning()
+		states = [] #self.getRunning()
 		odd = True
 
 		for (bugId, bug) in sorted(bugs.iteritems(), key=lambda (k,v): natural_keys(k)):
@@ -110,13 +110,7 @@ class MyNodeHandler(object):
 				if tool in bug:
 					task = bug[tool]
 					if task in self.toExecuteTask:
-						output += " {0:8} |".format("Queue")
-					elif str(self.taskOARId[task]) in states:
-						state = states[str(self.taskOARId[task])]
-						if state['state'] == "Running":
-							output += " {0:8} |".format(datetime.timedelta(seconds=int(time.time() - float(state['startTime']))))
-						else:
-							output += " {0:8} |".format(state['state'])
+						output += " {0:8} |".format("Queue")					
 					else:
 						resultlog =  os.path.join(task.project.logPath, str(task.id), task.tool.name, 'results.json')
 						stderrToolPath =  os.path.join(task.project.logPath, str(task.id), task.tool.name, 'stderr.log')
@@ -138,7 +132,11 @@ class MyNodeHandler(object):
 									output += " {0:8} |".format("Empty")
 								else:
 									output += " {0:8} |".format("Error")
-			output += "\x1b[0m\n"		
+			output += "\x1b[0m\n"	
+		if self.init:
+			for i in range(1, len(output.split("\n")) + 1):
+				sys.stdout.write("\033[F")
+				sys.stdout.write("\033[K")	
 		self.init = True
 		print output
 		
