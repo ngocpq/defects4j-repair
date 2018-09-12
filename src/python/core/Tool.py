@@ -49,7 +49,7 @@ class Tool(object):
 
 		print cmd
 		subprocess.check_output(cmd, shell=True)
-		project.compile(workdir)
+ 		project.compile(workdir)
 		return workdir
 
 	def getHostname(self):

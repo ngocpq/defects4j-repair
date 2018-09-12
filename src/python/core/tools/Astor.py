@@ -68,7 +68,7 @@ class Astor(Tool):
 		print path
 		if not os.path.exists(os.path.dirname(path)):
 			os.makedirs(os.path.dirname(path))
-		#cmd += 'cp -r outputMutation/ ' + os.path.dirname(path) + ';'
+		cmd += 'cp -r output_astor/AstorMain-./src/ ' + os.path.dirname(path) + ';'
 		cmd += 'echo "\n\nNode: `hostname`\n";'
 		cmd += 'echo "\nDate: `date`\n";'
 		cmd += 'rm -rf ' + workdir +  ';'
